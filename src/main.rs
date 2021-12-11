@@ -3,9 +3,10 @@ use std::io::prelude::*;
 use std::{env, io};
 
 mod day_01;
+mod day_02;
 
 fn main() {
-    let challenges = [day_01::main];
+    let challenges = [day_01::main, day_02::main];
 
     let mut choice: usize;
 
