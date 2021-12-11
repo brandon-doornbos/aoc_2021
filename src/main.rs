@@ -21,11 +21,15 @@ fn main() {
             .lock()
             .read_line(&mut buf)
             .expect("Failed on read_line");
-    
+
         choice = buf.trim().parse().unwrap();
     }
 
-    choice = (if choice <= 0 { 1 } else { choice.min(challenges.len()) }) - 1;
+    choice = (if choice <= 0 {
+        1
+    } else {
+        choice.min(challenges.len())
+    }) - 1;
     println!("Running challenges from day {}!", choice + 1);
     challenges[choice]();
 }
