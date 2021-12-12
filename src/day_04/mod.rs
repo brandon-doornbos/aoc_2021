@@ -35,7 +35,7 @@ pub fn main() {
     }
 
     println!("Part 1: {}", part_1(&boards, &calls));
-    // println!("Part 2: {}", part_2(&input));
+    println!("Part 2: {}", part_2(&boards, &calls));
 }
 
 fn part_1(input: &BoardsContainer, calls: &[usize]) -> usize {
@@ -69,9 +69,41 @@ fn part_1(input: &BoardsContainer, calls: &[usize]) -> usize {
     panic!();
 }
 
-// fn part_2(input: &[&str]) -> usize {
-//     0
-// }
+fn part_2(input: &BoardsContainer, calls: &[usize]) -> usize {
+    let mut checks: BoardsContainer = [[[0; BOARD_SZ]; BOARD_SZ]; BOARD_AMT];
+    let mut boards: [bool; BOARD_AMT] = [false; BOARD_AMT];
+
+    for call in calls {
+        for board in 0..BOARD_AMT {
+            for row in 0..BOARD_SZ {
+                for col in 0..BOARD_SZ {
+                    if input[board][row][col] == *call {
+                        checks[board][row][col] = 1;
+                    }
+                }
+            }
+            if check_board(&checks[board]) {
+                boards[board] = true;
+
+                if !boards.iter().any(|board| !board) {
+                    let mut sum: usize = 0;
+
+                    for row in 0..BOARD_SZ {
+                        for col in 0..BOARD_SZ {
+                            if checks[board][row][col] == 0 {
+                                sum += input[board][row][col];
+                            }
+                        }
+                    }
+
+                    return sum * call;
+                }
+            }
+        }
+    }
+
+    panic!();
+}
 
 #[derive(Clone, Copy)]
 struct Line {
