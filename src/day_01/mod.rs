@@ -6,7 +6,8 @@ pub fn main() {
     input_file.read_to_string(&mut input_raw).unwrap();
 
     let input: Vec<usize> = input_raw
-        .split_whitespace()
+        .trim()
+        .split('\n')
         .map(|str| str.parse().unwrap())
         .collect();
 

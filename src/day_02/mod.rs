@@ -5,7 +5,7 @@ pub fn main() {
     let mut input_raw = String::new();
     input_file.read_to_string(&mut input_raw).unwrap();
 
-    let mut parts = input_raw.split('\n');
+    let mut parts = input_raw.trim().split('\n');
 
     println!("Part 1: {}", part_1(&mut parts.clone()));
     println!("Part 2: {}", part_2(&mut parts));
