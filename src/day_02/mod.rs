@@ -15,7 +15,7 @@ fn part_1(input: &mut Split<char>) -> usize {
     let (mut x, mut y) = (0, 0);
 
     for command in input {
-        let parts: Vec<&str> = command.split(" ").collect();
+        let parts: Vec<&str> = command.split(' ').collect();
         let count: usize = parts[1].parse().unwrap();
         match parts[0] {
             "forward" => {
@@ -38,7 +38,7 @@ fn part_2(input: &mut Split<char>) -> usize {
     let (mut x, mut y, mut aim) = (0, 0, 0);
 
     for command in input {
-        let parts: Vec<&str> = command.split(" ").collect();
+        let parts: Vec<&str> = command.split(' ').collect();
         let count: usize = parts[1].parse().unwrap();
         match parts[0] {
             "forward" => {

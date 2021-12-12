@@ -15,7 +15,7 @@ pub fn main() {
     println!("Part 2: {}", part_2(&input));
 }
 
-fn part_1(input: &Vec<usize>) -> usize {
+fn part_1(input: &[usize]) -> usize {
     let mut increases: usize = 0;
 
     for i in 1..input.len() {
@@ -27,12 +27,12 @@ fn part_1(input: &Vec<usize>) -> usize {
     increases
 }
 
-fn part_2(input: &Vec<usize>) -> usize {
+fn part_2(input: &[usize]) -> usize {
     let mut increases: usize = 0;
 
     for i in 1..(input.len() - 2) {
-        if (input[i..=(i + 2)]).into_iter().sum::<usize>()
-            > (input[(i - 1)..=(i + 1)]).into_iter().sum::<usize>()
+        if (input[i..=(i + 2)]).iter().sum::<usize>()
+            > (input[(i - 1)..=(i + 1)]).iter().sum::<usize>()
         {
             increases += 1;
         }

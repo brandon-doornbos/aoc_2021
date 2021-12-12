@@ -26,7 +26,7 @@ fn main() {
         choice = buf.trim().parse().unwrap();
     }
 
-    choice = (if choice <= 0 {
+    choice = (if choice == 0 {
         1
     } else {
         choice.min(challenges.len())
