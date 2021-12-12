@@ -61,20 +61,22 @@ fn part_2(input: &[&str]) -> usize {
                 }
             }
 
-            let comp: char = if bits[0][index] > bits[1][index] {
-                if greater {
-                    '0'
-                } else {
-                    '1'
+            let comp: char = match bits[0][index].cmp(&bits[1][index]) {
+                std::cmp::Ordering::Greater => {
+                    if greater {
+                        '0'
+                    } else {
+                        '1'
+                    }
                 }
-            } else if bits[0][index] < bits[1][index] {
-                if greater {
-                    '1'
-                } else {
-                    '0'
+                std::cmp::Ordering::Less => {
+                    if greater {
+                        '1'
+                    } else {
+                        '0'
+                    }
                 }
-            } else {
-                '&'
+                _ => '&',
             };
 
             let mut new_result: Vec<String> = vec![];
@@ -84,7 +86,7 @@ fn part_2(input: &[&str]) -> usize {
                 if (comp == '&' && chars[index] != (if greater { '0' } else { '1' }))
                     || comp == chars[index]
                 {
-                    new_result.push(String::from(line.clone()));
+                    new_result.push(line.clone());
                 }
             }
 
@@ -95,7 +97,7 @@ fn part_2(input: &[&str]) -> usize {
         binary_to_decimal(result[0].clone())
     }
 
-    process_input(input.clone(), true) * process_input(input.clone(), false)
+    process_input(input, true) * process_input(input, false)
 }
 
 fn binary_to_decimal(binary: String) -> usize {
