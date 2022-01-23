@@ -6,7 +6,7 @@ type Board = [[usize; BOARD_SZ]; BOARD_SZ];
 type BoardsContainer = [Board; BOARD_AMT];
 
 pub fn main() {
-    let mut input_file = File::open("./src/day_04/input.txt").unwrap();
+    let mut input_file = File::open("./src/bin/day_04/input.txt").unwrap();
     let mut input_raw = String::new();
     input_file.read_to_string(&mut input_raw).unwrap();
 
