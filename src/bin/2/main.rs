@@ -1,7 +1,7 @@
 use std::{fs::File, io::Read, str::Split};
 
 pub fn main() {
-    let mut input_file = File::open("./src/bin/day_02/input.txt").unwrap();
+    let mut input_file = File::open("./src/bin/2/input.txt").unwrap();
     let mut input_raw = String::new();
     input_file.read_to_string(&mut input_raw).unwrap();
 

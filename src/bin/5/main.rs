@@ -3,7 +3,7 @@ use std::{fs::File, io::Read};
 const FLOOR_SZ: usize = 1000;
 
 pub fn main() {
-    let mut input_file = File::open("./src/bin/day_05/input.txt").unwrap();
+    let mut input_file = File::open("./src/bin/5/input.txt").unwrap();
     let mut input_raw = String::new();
     input_file.read_to_string(&mut input_raw).unwrap();
     let input: Vec<usize> = input_raw
