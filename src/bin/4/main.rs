@@ -1,15 +1,10 @@
-use std::{fs::File, io::Read};
-
 const BOARD_SZ: usize = 5;
 const BOARD_AMT: usize = 100;
 type Board = [[usize; BOARD_SZ]; BOARD_SZ];
 type BoardsContainer = [Board; BOARD_AMT];
 
 pub fn main() {
-    let mut input_file = File::open("./src/bin/4/input.txt").unwrap();
-    let mut input_raw = String::new();
-    input_file.read_to_string(&mut input_raw).unwrap();
-
+    let input_raw = include_str!("input.txt");
     let mut input = input_raw.trim().split('\n');
     let calls: Vec<usize> = input
         .next()

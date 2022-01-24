@@ -1,10 +1,5 @@
-use std::{fs::File, io::Read};
-
 fn main() {
-    let mut input_file = File::open("./src/bin/1/input.txt").unwrap();
-    let mut input_raw = String::new();
-    input_file.read_to_string(&mut input_raw).unwrap();
-
+    let input_raw = include_str!("input.txt");
     let input: Vec<usize> = input_raw
         .trim()
         .split('\n')
