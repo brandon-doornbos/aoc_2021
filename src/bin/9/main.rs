@@ -3,7 +3,7 @@ pub fn main() {
     let mut input = vec![];
 
     for row in input_raw.split('\n') {
-        let nums: Vec<usize> = row.split("").filter_map(|s| s.parse().ok()).collect();
+        let nums: Vec<i32> = row.split("").filter_map(|s| s.parse().ok()).collect();
         input.push(nums);
     }
 
@@ -11,8 +11,8 @@ pub fn main() {
     println!("Part 2: {}", part_2(&input));
 }
 
-fn part_1(input: &[Vec<usize>]) -> usize {
-    let mut risk_sum: usize = 0;
+fn part_1(input: &[Vec<i32>]) -> i32 {
+    let mut risk_sum = 0;
 
     for (i, row) in input.iter().enumerate() {
         for (j, point) in row.iter().enumerate() {
@@ -31,9 +31,9 @@ fn part_1(input: &[Vec<usize>]) -> usize {
     risk_sum
 }
 
-fn part_2(input: &[Vec<usize>]) -> usize {
+fn part_2(input: &[Vec<i32>]) -> i32 {
     let mut low_points: Vec<(usize, usize, usize)> = vec![];
-    let mut basins: Vec<usize> = vec![];
+    let mut basins: Vec<i32> = vec![];
 
     let input_len = input.len();
     let row_len = input[0].len();

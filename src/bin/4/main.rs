@@ -1,12 +1,12 @@
 const BOARD_SZ: usize = 5;
 const BOARD_AMT: usize = 100;
-type Board = [[usize; BOARD_SZ]; BOARD_SZ];
+type Board = [[i32; BOARD_SZ]; BOARD_SZ];
 type BoardsContainer = [Board; BOARD_AMT];
 
 pub fn main() {
     let input_raw = include_str!("input.txt");
     let mut input = input_raw.trim().split('\n');
-    let calls: Vec<usize> = input
+    let calls: Vec<i32> = input
         .next()
         .unwrap()
         .split(',')
@@ -33,7 +33,7 @@ pub fn main() {
     println!("Part 2: {}", part_2(&boards, &calls));
 }
 
-fn part_1(input: &BoardsContainer, calls: &[usize]) -> usize {
+fn part_1(input: &BoardsContainer, calls: &[i32]) -> i32 {
     let mut checks: BoardsContainer = [[[0; BOARD_SZ]; BOARD_SZ]; BOARD_AMT];
 
     for call in calls {
@@ -46,7 +46,7 @@ fn part_1(input: &BoardsContainer, calls: &[usize]) -> usize {
                 }
             }
             if check_board(&checks[board]) {
-                let mut sum: usize = 0;
+                let mut sum = 0;
 
                 for row in 0..BOARD_SZ {
                     for col in 0..BOARD_SZ {
@@ -64,7 +64,7 @@ fn part_1(input: &BoardsContainer, calls: &[usize]) -> usize {
     panic!();
 }
 
-fn part_2(input: &BoardsContainer, calls: &[usize]) -> usize {
+fn part_2(input: &BoardsContainer, calls: &[i32]) -> i32 {
     let mut checks: BoardsContainer = [[[0; BOARD_SZ]; BOARD_SZ]; BOARD_AMT];
     let mut boards: [bool; BOARD_AMT] = [false; BOARD_AMT];
 
@@ -81,7 +81,7 @@ fn part_2(input: &BoardsContainer, calls: &[usize]) -> usize {
                 boards[board] = true;
 
                 if !boards.iter().any(|board| !board) {
-                    let mut sum: usize = 0;
+                    let mut sum = 0;
 
                     for row in 0..BOARD_SZ {
                         for col in 0..BOARD_SZ {

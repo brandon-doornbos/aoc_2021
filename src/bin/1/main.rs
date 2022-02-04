@@ -1,6 +1,6 @@
 fn main() {
     let input_raw = include_str!("input.txt");
-    let input: Vec<usize> = input_raw
+    let input: Vec<i32> = input_raw
         .trim()
         .split('\n')
         .map(|str| str.parse().unwrap())
@@ -10,8 +10,8 @@ fn main() {
     println!("Part 2: {}", part_2(&input));
 }
 
-fn part_1(input: &[usize]) -> usize {
-    let mut increases: usize = 0;
+fn part_1(input: &[i32]) -> i32 {
+    let mut increases = 0;
 
     for i in 1..input.len() {
         if input[i] > input[i - 1] {
@@ -22,12 +22,11 @@ fn part_1(input: &[usize]) -> usize {
     increases
 }
 
-fn part_2(input: &[usize]) -> usize {
-    let mut increases: usize = 0;
+fn part_2(input: &[i32]) -> i32 {
+    let mut increases = 0;
 
     for i in 1..(input.len() - 2) {
-        if (input[i..=(i + 2)]).iter().sum::<usize>()
-            > (input[(i - 1)..=(i + 1)]).iter().sum::<usize>()
+        if (input[i..=(i + 2)]).iter().sum::<i32>() > (input[(i - 1)..=(i + 1)]).iter().sum::<i32>()
         {
             increases += 1;
         }

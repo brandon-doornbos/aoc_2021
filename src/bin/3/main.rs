@@ -8,8 +8,8 @@ pub fn main() {
     println!("Part 2: {}", part_2(&input));
 }
 
-fn part_1(input: &[&str]) -> usize {
-    let mut bits: [[usize; BIT_LENGTH]; 2] = [[0; BIT_LENGTH]; 2];
+fn part_1(input: &[&str]) -> i32 {
+    let mut bits: [[i32; BIT_LENGTH]; 2] = [[0; BIT_LENGTH]; 2];
 
     for line in input {
         let chars = line.chars().enumerate();
@@ -37,13 +37,13 @@ fn part_1(input: &[&str]) -> usize {
     binary_to_decimal(epsilon) * binary_to_decimal(gamma)
 }
 
-fn part_2(input: &[&str]) -> usize {
-    fn process_input(input: &[&str], greater: bool) -> usize {
+fn part_2(input: &[&str]) -> i32 {
+    fn process_input(input: &[&str], greater: bool) -> i32 {
         let mut result: Vec<String> = input.iter().map(|str| String::from(*str)).collect();
         let mut index = 0;
 
         while result.len() > 1 {
-            let mut bits: [[usize; BIT_LENGTH]; 2] = [[0; BIT_LENGTH]; 2];
+            let mut bits: [[i32; BIT_LENGTH]; 2] = [[0; BIT_LENGTH]; 2];
 
             for line in &result {
                 let chars = line.chars().enumerate();
@@ -95,12 +95,12 @@ fn part_2(input: &[&str]) -> usize {
     process_input(input, true) * process_input(input, false)
 }
 
-fn binary_to_decimal(binary: String) -> usize {
-    let mut result: usize = 0;
+fn binary_to_decimal(binary: String) -> i32 {
+    let mut result = 0;
 
     for (i, char) in binary.chars().enumerate() {
         if char == '1' {
-            result += 2_usize.pow((binary.len() - i - 1).try_into().unwrap());
+            result += 2_i32.pow((binary.len() - i - 1).try_into().unwrap());
         }
     }
 

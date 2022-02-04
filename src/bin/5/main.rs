@@ -13,15 +13,15 @@ pub fn main() {
     println!("Part 2: {}", part_2(&input));
 }
 
-fn part_1(input: &Vec<usize>) -> usize {
-    let mut floor: Vec<usize> = vec![0; FLOOR_SZ * FLOOR_SZ];
+fn part_1(input: &[usize]) -> i32 {
+    let mut floor: Vec<i32> = vec![0; FLOOR_SZ * FLOOR_SZ];
 
-    let mut i: usize = 0;
+    let mut i = 0;
     while i < input.len() {
-        let x1: usize = input[i + 0];
-        let y1: usize = input[i + 1];
-        let x2: usize = input[i + 2];
-        let y2: usize = input[i + 3];
+        let x1 = input[i];
+        let y1 = input[i + 1];
+        let x2 = input[i + 2];
+        let y2 = input[i + 3];
         i += 4;
 
         if x1 == x2 {
@@ -35,7 +35,7 @@ fn part_1(input: &Vec<usize>) -> usize {
         }
     }
 
-    let mut overlap: usize = 0;
+    let mut overlap: i32 = 0;
     for point in floor {
         if point > 1 {
             overlap += 1;
@@ -45,15 +45,15 @@ fn part_1(input: &Vec<usize>) -> usize {
     overlap
 }
 
-fn part_2(input: &Vec<usize>) -> usize {
-    let mut floor: Vec<usize> = vec![0; FLOOR_SZ * FLOOR_SZ];
+fn part_2(input: &[usize]) -> i32 {
+    let mut floor: Vec<i32> = vec![0; FLOOR_SZ * FLOOR_SZ];
 
-    let mut i: usize = 0;
+    let mut i = 0;
     while i < input.len() {
-        let x1: usize = input[i + 0];
-        let y1: usize = input[i + 1];
-        let x2: usize = input[i + 2];
-        let y2: usize = input[i + 3];
+        let x1 = input[i];
+        let y1 = input[i + 1];
+        let x2 = input[i + 2];
+        let y2 = input[i + 3];
         i += 4;
 
         if x1 == x2 {
@@ -65,8 +65,8 @@ fn part_2(input: &Vec<usize>) -> usize {
                 floor[y1 * FLOOR_SZ + x] += 1;
             }
         } else {
-            let mut x: usize = x1;
-            let mut y: usize = y1;
+            let mut x = x1;
+            let mut y = y1;
             if x1 <= x2 {
                 if y1 <= y2 {
                     while {
@@ -85,29 +85,27 @@ fn part_2(input: &Vec<usize>) -> usize {
                         x <= x2 && y >= y2
                     } {}
                 }
+            } else if y1 <= y2 {
+                while {
+                    floor[y * FLOOR_SZ + x] += 1;
+                    x -= 1;
+                    y += 1;
+
+                    x >= x2 && y <= y2
+                } {}
             } else {
-                if y1 <= y2 {
-                    while {
-                        floor[y * FLOOR_SZ + x] += 1;
-                        x -= 1;
-                        y += 1;
+                while {
+                    floor[y * FLOOR_SZ + x] += 1;
+                    x -= 1;
+                    y -= 1;
 
-                        x >= x2 && y <= y2
-                    } {}
-                } else {
-                    while {
-                        floor[y * FLOOR_SZ + x] += 1;
-                        x -= 1;
-                        y -= 1;
-
-                        x >= x2 && y >= y2
-                    } {}
-                }
+                    x >= x2 && y >= y2
+                } {}
             }
         }
     }
 
-    let mut overlap: usize = 0;
+    let mut overlap: i32 = 0;
     for point in floor {
         if point > 1 {
             overlap += 1;

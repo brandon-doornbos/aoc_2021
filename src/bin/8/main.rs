@@ -16,8 +16,8 @@ pub fn main() {
     println!("Part 2: {}", part_2(&input));
 }
 
-fn part_1(input: &[&str]) -> usize {
-    let mut unique_values: usize = 0;
+fn part_1(input: &[&str]) -> i32 {
+    let mut unique_values = 0;
 
     for i in (0..input.len()).step_by(NUMBER_BASE + OUTPUT_VALUE_COUNT) {
         for j in 0..OUTPUT_VALUE_COUNT {
@@ -35,8 +35,8 @@ fn part_1(input: &[&str]) -> usize {
     unique_values
 }
 
-fn part_2(input: &[&str]) -> usize {
-    let mut total: usize = 0;
+fn part_2(input: &[&str]) -> i32 {
+    let mut total = 0;
 
     for i in (0..input.len()).step_by(INPUT_LINE_LENGTH) {
         let mut segment_signal: [u8; SEGMENT_COUNT] = [0; SEGMENT_COUNT];
@@ -126,7 +126,7 @@ fn part_2(input: &[&str]) -> usize {
             )));
         }
 
-        total += output_value.parse::<usize>().unwrap();
+        total += output_value.parse::<i32>().unwrap();
     }
 
     total

@@ -15,18 +15,18 @@ pub fn main() {
     );
 }
 
-fn part_1_2(input: &[usize], fuel_cost_func: &dyn Fn(usize) -> usize) -> usize {
-    let mut crabs_pos: [usize; MAX_POSITION] = [0; MAX_POSITION];
-    let mut fuel_costs: [usize; MAX_POSITION] = [0; MAX_POSITION];
+fn part_1_2(input: &[usize], fuel_cost_func: &dyn Fn(i32) -> i32) -> i32 {
+    let mut crabs_pos: [i32; MAX_POSITION] = [0; MAX_POSITION];
+    let mut fuel_costs: [i32; MAX_POSITION] = [0; MAX_POSITION];
 
     for pos in input {
         crabs_pos[*pos] += 1;
     }
 
-    for i in 0..MAX_POSITION {
-        for j in 0..MAX_POSITION {
-            let dist = ((i as isize) - (j as isize)).abs() as usize;
-            fuel_costs[i] += crabs_pos[j] * fuel_cost_func(dist);
+    for (i, fuel) in fuel_costs.iter_mut().enumerate() {
+        for (j, crab) in crabs_pos.iter().enumerate() {
+            let dist = ((i as i32) - (j as i32)).abs();
+            *fuel += crab * fuel_cost_func(dist);
         }
     }
 

@@ -14,14 +14,14 @@ pub fn main() {
     println!("Part 2: {}", part_1_2(&input, 256));
 }
 
-fn part_1_2(input: &Vec<usize>, days: usize) -> u64 {
+fn part_1_2(input: &[usize], days: u32) -> u64 {
     let mut ages: [u64; INITIAL_AGE + 1] = [0; INITIAL_AGE + 1];
 
     for age in input {
         ages[*age] += 1;
     }
 
-    for _i in 0..days {
+    for _ in 0..days {
         let mut reset_fish: u64 = 0;
         let mut new_fish: u64 = 0;
         for i in BIRTH_AGE..=INITIAL_AGE {
@@ -39,8 +39,8 @@ fn part_1_2(input: &Vec<usize>, days: usize) -> u64 {
     }
 
     let mut fish_amt = 0;
-    for i in BIRTH_AGE..=INITIAL_AGE {
-        fish_amt += ages[i];
+    for fish in ages {
+        fish_amt += fish;
     }
     fish_amt
 }
