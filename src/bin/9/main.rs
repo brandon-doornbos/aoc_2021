@@ -1,4 +1,4 @@
-pub fn main() {
+fn main() {
     let input_raw = include_str!("input.txt").trim();
     let mut input = vec![];
 

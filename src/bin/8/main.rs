@@ -4,7 +4,7 @@ const DIGIT_SEGMENT_COUNT: [usize; NUMBER_BASE] = [6, 2, 5, 5, 4, 5, 6, 3, 7, 6]
 const INPUT_LINE_LENGTH: usize = NUMBER_BASE + OUTPUT_VALUE_COUNT;
 const SEGMENT_COUNT: usize = 7;
 
-pub fn main() {
+fn main() {
     let input_raw = include_str!("input.txt");
     let input: Vec<&str> = input_raw
         .trim()

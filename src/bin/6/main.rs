@@ -2,7 +2,7 @@ const BIRTH_AGE: usize = 0;
 const RESET_AGE: usize = 6;
 const INITIAL_AGE: usize = 8;
 
-pub fn main() {
+fn main() {
     let input_raw = include_str!("input.txt");
     let input: Vec<usize> = input_raw
         .trim()

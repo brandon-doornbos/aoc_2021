@@ -1,6 +1,6 @@
 use std::str::Split;
 
-pub fn main() {
+fn main() {
     let input_raw = include_str!("input.txt");
     let mut parts = input_raw.trim().split('\n');
 

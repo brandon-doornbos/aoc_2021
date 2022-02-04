@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-pub fn main() {
+fn main() {
     let input_raw = include_str!("input.txt").trim();
     let input: Vec<&str> = input_raw.split('\n').collect();
 

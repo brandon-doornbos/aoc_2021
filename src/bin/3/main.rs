@@ -1,6 +1,6 @@
 const BIT_LENGTH: usize = 12;
 
-pub fn main() {
+fn main() {
     let input_raw = include_str!("input.txt");
     let input: Vec<&str> = input_raw.trim().split('\n').collect();
 

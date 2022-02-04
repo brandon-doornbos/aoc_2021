@@ -1,6 +1,6 @@
 const FLOOR_SZ: usize = 1000;
 
-pub fn main() {
+fn main() {
     let input_raw = include_str!("input.txt");
     let input: Vec<usize> = input_raw
         .trim()

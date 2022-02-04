@@ -3,7 +3,7 @@ const BOARD_AMT: usize = 100;
 type Board = [[i32; BOARD_SZ]; BOARD_SZ];
 type BoardsContainer = [Board; BOARD_AMT];
 
-pub fn main() {
+fn main() {
     let input_raw = include_str!("input.txt");
     let mut input = input_raw.trim().split('\n');
     let calls: Vec<i32> = input
